@@ -101,7 +101,7 @@ class BZ2File(io.BufferedIOBase):
             mode_code = _MODE_WRITE
             self._compressor = BZ2Compressor(compresslevel)
         else:
-            raise ValueError("Invalid mode: %r" % (mode,))
+            raise ValueError("Invalid mode: {!r}".format(mode))
 
         if isinstance(filename, _STR_TYPES):
             self._fp = _builtin_open(filename, mode)
@@ -439,7 +439,7 @@ class BZ2File(io.BufferedIOBase):
                     self._read_all(return_data=False)
                 offset = self._size + offset
             else:
-                raise ValueError("Invalid value for whence: %s" % (whence,))
+                raise ValueError("Invalid value for whence: {}".format(whence))
 
             # Make it so that offset is the number of bytes to skip forward.
             if offset < self._pos:
@@ -481,7 +481,7 @@ def open(filename, mode="rb", compresslevel=9,
     """
     if "t" in mode:
         if "b" in mode:
-            raise ValueError("Invalid mode: %r" % (mode,))
+            raise ValueError("Invalid mode: {!r}".format(mode))
     else:
         if encoding is not None:
             raise ValueError("Argument 'encoding' not supported in binary mode")
