@@ -460,7 +460,6 @@ class BZ2FileTest(BaseTest):
         self.assertEqual(xlines, [b'Test'])
 
     def testContextProtocol(self):
-        f = None
         with BZ2File(self.filename, "wb") as f:
             f.write(b"xxx")
         f = BZ2File(self.filename, "rb")
@@ -671,10 +670,10 @@ class OpenTest(BaseTest):
             return
         for mode in ("x", "xb", "xt"):
             support.unlink(self.filename)
-            with self.open(self.filename, mode) as f:
+            with self.open(self.filename, mode):
                 pass
             with self.assertRaises(FileExistsError):
-                with self.open(self.filename, mode) as f:
+                with self.open(self.filename, mode):
                     pass
 
     def test_fileobj(self):
