@@ -18,7 +18,7 @@ except ImportError:
 
 
 class BaseTest(unittest.TestCase):
-    "Base for other testcases."
+    """Base for other testcases."""
 
     TEXT_LINES = [
         b'root:x:0:0:root:/root:/bin/bash\n',
@@ -73,7 +73,7 @@ class BaseTest(unittest.TestCase):
 
 
 class BZ2FileTest(BaseTest):
-    "Test the BZ2File class."
+    """Test the BZ2File class."""
 
     def createTempFile(self, streams=1, suffix=b""):
         with open(self.filename, "wb") as f:
@@ -602,7 +602,7 @@ class BZ2FileTest(BaseTest):
 
 
 class OpenTest(BaseTest):
-    "Test the open function."
+    """Test the open function."""
 
     def open(self, *args, **kwargs):
         return bz2file.open(*args, **kwargs)
